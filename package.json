@@ -1,0 +1,28 @@
+{
+  "name": "grunt",
+  "version": "1.0.0",
+  "description": "vision canaria web site",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackweaver/vision-canaria.git"
+  },
+  "author": "ricardocastillo.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blackweaver/vision-canaria/issues"
+  },
+  "homepage": "https://github.com/blackweaver/vision-canaria#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.43.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}
