@@ -9,18 +9,16 @@ const slide = (level) => {
     console.log("Quiero avanzar", level);
 }
 
-const levels = [];
+const currentLevel = [];
 
-const getBack = (level) => {
-    levels.pop();
-    console.log(levels[levels.length - 1]);
-    drawMenu(level,levels[levels.length - 1],true);
+const getBack = () => {
+    currentLevel.pop();
+    drawMenu(currentLevel[currentLevel.length - 1],true);
 }
 
-const drawMenu = (level,parent,back) => {
+const drawMenu = (parent,back) => {
     parent = parent || null;
-    if(!back) levels.push(parent);
-    console.log(levels)
+    if(!back) currentLevel.push(parent);
     if(multilevel.children.length) {
         multilevel.children[0].remove();
     }
@@ -30,20 +28,28 @@ const drawMenu = (level,parent,back) => {
         const dt = document.createElement('dt');
         const a = document.createElement('a');
         a.href = "#";
-        a.setAttribute('onclick', `getBack(${ level - 1 })`);
-        a.textContent = parent;
+        a.setAttribute('onclick', `getBack()`);
+        a.textContent = "<..." + document.querySelector(`[data-item="${ parent }"]`).text;
         dt.appendChild(a);
         dl.appendChild(dt);
     }
     for(let i = 0; i < obj.length; i++){
-        if(obj[i].level === level && (obj[i].parent === parent || parent === null)) {
+       
+        if(obj[i].parent === parent) {
             const dd = document.createElement('dd');
             const a = document.createElement('a');
-            a.textContent = obj[i].text;
-            a.href = obj[i].link;
+            const spanName = document.createElement('span');
+            const spanArrow = document.createElement('span');
+            spanArrow.textContent = "...>";
+            a.appendChild(spanName);      
             if(obj[i].children) {
-                a.setAttribute('onclick', `drawMenu(${ obj[i].level + 1 }, "${ obj[i].text }")`);
+                a.appendChild(spanArrow);   
+                console.log(obj[i].text);
+                a.setAttribute('onclick', `drawMenu("${ obj[i].name }")`);
             }
+            spanName.textContent = obj[i].text;
+            a.href = obj[i].link;
+            a.style.display = "flex";
             dd.appendChild(a);       
             dl.appendChild(dd);
         }
@@ -51,22 +57,23 @@ const drawMenu = (level,parent,back) => {
     multilevel.appendChild(dl);
 }
 
-const readMenu = (parent,level) => {
+const readMenu = (parent) => {
     for(let i = 0; i<parent.children.length; i++ ){
         obj.push(
             { 
                 text: parent.children[i].children[0].text,
                 link: (parent.children[i].children[1]) ? "#" : parent.children[i].children[0].href,
-                level: level,
-                parent: (parent.children[0].parentNode.parentNode.children[0].text)? parent.children[0].parentNode.parentNode.children[0].text : null,
+                name: parent.children[i].children[0].dataset.item,
+                parent: (parent.children[0].parentNode.parentNode.children[0].dataset.item)? parent.children[0].parentNode.parentNode.children[0].dataset.item : null,
                 children: (parent.children[i].children[1]) ? true : false
             });
         if(parent.children[i].children[1]) {
-            readMenu(parent.children[i].children[1], level + 1);    
+            readMenu(parent.children[i].children[1]);    
         }
     }
 }
 
 menu ? readMenu(menu,0) : null;
-menu ? drawMenu(0) : null;
+menu ? drawMenu("1.1",true) : null;
+// menu ? drawMenu() : null;
 menu.style.display = "none";
