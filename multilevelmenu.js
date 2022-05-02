@@ -18,7 +18,7 @@ class MultiLevelMenu {
 
     get menuItems() {
         return this.items;
-      }
+    }
 
     getBack = () => {
         this.currentLevel.pop();
@@ -31,7 +31,6 @@ class MultiLevelMenu {
         if(this.multilevel.children.length >= 2) {
             this.multilevel.children[0].remove();
         }
-        // console.log(...obj)
         const dl = document.createElement('dl');
         if(parent) {
             const dt = document.createElement('dt');
@@ -43,7 +42,6 @@ class MultiLevelMenu {
             dl.appendChild(dt);
         }
         for(let i = 0; i < this.obj.length; i++){
-        
             if(this.obj[i].parent === parent) {
                 const dd = document.createElement('dd');
                 const a = document.createElement('a');
