@@ -18,20 +18,20 @@
                         <a href="#">1.1 Second level</a> 
                         <ul>
                             <li>
-                                <a href="http://www.google.com">1.1.1 Third level</a> 
+                                <a href="#">1.1.1 Third level</a> 
                             </li>
                             <li>
-                                <a href="http://www.google.com">1.1.2 Third level</a> 
+                                <a href="#">1.1.2 Third level</a> 
                             </li>
                             <li>
-                                <a href="http://www.google.com">1.1.3 Third level</a> 
+                                <a href="http://www.google.com">1.1.3 Google</a> 
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="http://www.google.com">2 First level</a> 
+                <a href="#">2 First level</a> 
             </li>
             <li>
                 <a href="#">3 First level</a> 
@@ -40,22 +40,22 @@
                         <a href="#">3.1 Second level </a> 
                         <ul>
                             <li>
-                                <a href="http://www.google.com">3.1.1 Third level</a> 
+                                <a href="#">3.1.1 Third level</a> 
                                 <ul>
                                     <li>
-                                        <a href="http://www.google.com">3.1.1.1 Fourth level</a> 
+                                        <a href="#">3.1.1.1 Fourth level</a> 
                                         <ul>
                                             <li>
-                                                <a href="http://www.google.com">3.1.1.1.1 Fifth level</a> 
+                                                <a href="#">3.1.1.1.1 Fifth level</a> 
                                             </li>
                                             <li>
-                                                <a href="http://www.google.com">3.1.1.1.2 Fifth level</a> 
+                                                <a href="#">3.1.1.1.2 Fifth level</a> 
                                             </li>
                                             <li>
-                                                <a href="http://www.google.com">3.1.1.1.3 Fifth level</a> 
+                                                <a href="#">3.1.1.1.3 Fifth level</a> 
                                             </li>
                                             <li>
-                                                <a href="http://www.google.com">3.1.1.1.4 Fifth level</a> 
+                                                <a href="http://www.google.com">3.1.1.1.4 Google</a> 
                                             </li>
                                         </ul>
                                     </li>
@@ -64,7 +64,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="http://www.google.com">3.2 Second level</a> 
+                        <a href="#">3.2 Second level</a> 
                     </li>
                 </ul>
             </li>
@@ -74,7 +74,7 @@
         const nav = document.querySelector("nav");
         const menu = document.querySelector(".menu");
 
-        const mainMenu1 = new MultiLevelMenu(nav,menu,"mainMenu1","./images/left-arrow.svg");
+        const mainMenu1 = new MultiLevelMenu(nav,menu,"mainMenu1","./images/arrow.svg");
         // console.log(mainMenu1.menuItems);
         // menu ? mainMenu1.drawMenu() : null;
         menu ? mainMenu1.drawMenu(mainMenu1.menuItems[1],true) : null;
