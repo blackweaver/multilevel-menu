@@ -28,7 +28,7 @@ class MultiLevelMenu {
     drawMenu = (parent,back) => {
         parent = parent || null;
         if(!back) this.currentLevel.push(parent);
-        if(this.multilevel.children.length) {
+        if(this.multilevel.children.length >= 2) {
             this.multilevel.children[0].remove();
         }
         // console.log(...obj)
@@ -63,6 +63,15 @@ class MultiLevelMenu {
             }
         }
         this.multilevel.appendChild(dl);
+        if(this.multilevel.children.length > 1) {
+            if(!back) {
+                this.multilevel.children[0].className = "menu-left-out";
+                this.multilevel.children[1].className = "menu-right-in";
+            } else {
+                this.multilevel.children[0].className = "menu-right-out";
+                this.multilevel.children[1].className = "menu-left-in";
+            }
+        }
     }
 
     readMenu = (parent) => {

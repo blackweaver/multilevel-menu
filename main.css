@@ -1,0 +1,54 @@
+@keyframes menuOutLeft {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -80vw;
+  }
+}
+@keyframes menuOutRight {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 80vw;
+  }
+}
+@keyframes menuInLeft {
+  0% {
+    left: -80vw;
+  }
+  100% {
+    left: 0;
+  }
+}
+@keyframes menuInRight {
+  0% {
+    left: 80vw;
+  }
+  100% {
+    left: 0;
+  }
+}
+nav > div {
+  position: relative;
+}
+nav > div dl {
+  position: absolute;
+}
+nav > div dl.menu-left-out {
+  animation: menuOutLeft 0.5s;
+  left: -80vw;
+}
+nav > div dl.menu-left-in {
+  animation: menuInLeft 0.5s;
+  left: 0;
+}
+nav > div dl.menu-right-out {
+  animation: menuOutRight 0.5s;
+  left: 80vw;
+}
+nav > div dl.menu-right-in {
+  animation: menuInRight 0.5s;
+  left: 0;
+}

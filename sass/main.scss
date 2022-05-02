@@ -1,0 +1,65 @@
+$wide: 80vw;
+
+@keyframes menuOutLeft {
+    0% {
+      left: 0;
+    }
+  
+    100% {
+      left: $wide * -1;
+    }
+  }
+  
+  @keyframes menuOutRight {
+    0% {
+      left: 0;
+    }
+  
+    100% {
+      left: $wide;
+    }
+  }
+@keyframes menuInLeft {
+    0% {
+        left: $wide * -1;
+    }
+  
+    100% {
+      left: 0;
+    }
+  }
+  
+  @keyframes menuInRight {
+    0% {
+        left: $wide;
+    }
+  
+    100% {
+      left: 0;
+    }
+  }
+
+  nav > div {
+      position: relative;
+
+      dl {
+          position: absolute;
+
+          &.menu-left-out {
+            animation: menuOutLeft 0.5s;
+            left: $wide * -1;
+          }
+          &.menu-left-in {
+            animation: menuInLeft 0.5s;
+            left: 0;
+          }
+          &.menu-right-out {
+            animation: menuOutRight 0.5s;
+            left: $wide;
+          }
+          &.menu-right-in {
+            animation: menuInRight 0.5s;
+            left: 0;
+          }
+      }
+  }
