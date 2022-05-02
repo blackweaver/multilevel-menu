@@ -1,7 +1,8 @@
 class MultiLevelMenu {
 
-    constructor (nav, menu, method) {
+    constructor (nav, menu, method, arrow) {
         this.method = method;
+        this.arrow = arrow;
         this.items = []
         this.index = 0;
         this.obj = [];
@@ -35,10 +36,15 @@ class MultiLevelMenu {
         if(parent) {
             const dt = document.createElement('dt');
             const a = document.createElement('a');
+            const img = document.createElement('img');
+            const span = document.createElement('span');
+            img.setAttribute("src",this.arrow);
             a.href = "#";
             a.setAttribute('onclick', `${ this.method }.getBack()`);
-            a.textContent = "<..." + document.querySelector(`[data-name="${ parent }"]`).text;
+            span.textContent = document.querySelector(`[data-name="${ parent }"]`).text;
             dt.appendChild(a);
+            a.appendChild(img);
+            a.appendChild(span);
             dl.appendChild(dt);
         }
         for(let i = 0; i < this.obj.length; i++){
@@ -46,11 +52,11 @@ class MultiLevelMenu {
                 const dd = document.createElement('dd');
                 const a = document.createElement('a');
                 const spanName = document.createElement('span');
-                const spanArrow = document.createElement('span');
-                spanArrow.textContent = "...>";
                 a.appendChild(spanName);      
                 if(this.obj[i].children) {
-                    a.appendChild(spanArrow);   
+                    const img = document.createElement('img');
+                    img.setAttribute("src",this.arrow)
+                    a.appendChild(img);   
                     a.setAttribute('onclick', `${ this.method }.drawMenu("${ this.obj[i].name }")`);
                 }
                 spanName.textContent = this.obj[i].text;
@@ -62,7 +68,7 @@ class MultiLevelMenu {
         }
         this.multilevel.appendChild(dl);
         if(this.multilevel.children.length > 1) {
-            if(!back) {
+            if(back) {
                 this.multilevel.children[0].className = "menu-left-out";
                 this.multilevel.children[1].className = "menu-right-in";
             } else {

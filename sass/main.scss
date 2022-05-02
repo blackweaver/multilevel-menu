@@ -8,9 +8,8 @@ $wide: 80vw;
     100% {
       left: $wide * -1;
     }
-  }
-  
-  @keyframes menuOutRight {
+}
+@keyframes menuOutRight {
     0% {
       left: 0;
     }
@@ -18,7 +17,7 @@ $wide: 80vw;
     100% {
       left: $wide;
     }
-  }
+}
 @keyframes menuInLeft {
     0% {
         left: $wide * -1;
@@ -27,23 +26,99 @@ $wide: 80vw;
     100% {
       left: 0;
     }
-  }
-  
-  @keyframes menuInRight {
-    0% {
-        left: $wide;
-    }
+}
+@keyframes menuInRight {
+0% {
+    left: $wide;
+}
   
     100% {
       left: 0;
     }
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  background: black;
+  height: 100%;
+  margin: 0;
+  font-family: "Arial";
+  font-size: 2rem;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
   }
 
-  nav > div {
+  a {
+    text-decoration: none;
+    color:black;
+  }
+}
+
+nav {
+  background: lightblue;
+  height: 100%;
+  & > div {
       position: relative;
 
       dl {
+          width: 100%;
           position: absolute;
+          margin: 0;
+
+          
+
+          dd, dt {
+            padding: 0;
+            margin: 0;
+
+            a {
+              padding: 0.4rem 1.5rem;
+              img {
+                width: 20px;
+              }
+            }
+          }
+
+          dt {
+            background: white;
+            font-size: 1rem;
+
+            a {
+              display: flex;
+              align-items: center;
+              padding: 0;
+              color: black;
+              img {
+                background: white;
+                padding: 1rem;
+                width: 12px;
+              }
+            }
+          }
+
+          dd {
+            &:first-child {
+              margin-top: 2rem;
+            }
+            a {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              img {
+                -webkit-transform:rotate(180deg);
+                -moz-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+              }
+            }
+          }
 
           &.menu-left-out {
             animation: menuOutLeft 0.5s;
@@ -63,3 +138,4 @@ $wide: 80vw;
           }
       }
   }
+}
